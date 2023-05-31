@@ -28,3 +28,14 @@
 .card > img {
   width: 100%;
 }
+
+.restaurant-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card:hover {
+  border: 1px solid red;
+  background-color: #D3D3D3;
+
+}
