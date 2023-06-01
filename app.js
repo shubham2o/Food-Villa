@@ -27,7 +27,7 @@ const Header = () => {
   );
 };
 
-const restaurantList = [
+const restaurantsList = [
   {
     type: "restaurant",
     data: {
@@ -1047,20 +1047,27 @@ const restaurantList = [
   },
 ];
 
-const RestaurantCard = () => {
+const RestaurantCard = ({
+  cloudinaryImageId,
+  name,
+  cuisines,
+  avgRating,
+  deliveryTime,
+  costForTwo,
+}) => {
   return (
     <div className="card">
       <img
         src={
           "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
-          restaurantList[0].data?.cloudinaryImageId
+          cloudinaryImageId
         }
       />
-      <h2>{restaurantList[0].data?.name}</h2>
-      <h3>📃 {restaurantList[0].data?.cuisines.join(", ")}</h3>
-      <h4>⭐ {restaurantList[0].data?.avgRating}</h4>
-      <h4>⏲️ {restaurantList[0].data?.deliveryTime} MINS</h4>
-      <h4>💸 ₹{restaurantList[0].data?.costForTwo / 100} FOR TWO</h4>
+      <h2>{name}</h2>
+      <h3>📃 {cuisines.join(", ")}</h3>
+      <h4>⭐ {avgRating}</h4>
+      <h4>⏲️ {deliveryTime} MINS</h4>
+      <h4>💸 ₹{costForTwo / 100} FOR TWO</h4>
     </div>
   );
 };
@@ -1068,17 +1075,11 @@ const RestaurantCard = () => {
 const Body = () => {
   return (
     <div className="restaurant-list">
-      <RestaurantCard restaurant={restaurantList[0]} />
-      <RestaurantCard restaurant={restaurantList[1]} />
-      <RestaurantCard restaurant={restaurantList[2]} />
-      <RestaurantCard restaurant={restaurantList[3]} />
-      <RestaurantCard restaurant={restaurantList[4]} />
-      <RestaurantCard restaurant={restaurantList[5]} />
-      <RestaurantCard restaurant={restaurantList[6]} />
-      <RestaurantCard restaurant={restaurantList[7]} />
-      <RestaurantCard restaurant={restaurantList[8]} />
-      <RestaurantCard restaurant={restaurantList[9]} />
-      <RestaurantCard restaurant={restaurantList[10]} />
+      {/* <RestaurantCard {...restaurantsList[0].data} />
+      <RestaurantCard {...restaurantsList[1].data} /> */}
+      {restaurantsList.map((restaurant) => {
+        return <RestaurantCard {...restaurant.data} key={restaurant.data.id} />;
+      })}
     </div>
   );
 };

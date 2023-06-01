@@ -35,7 +35,6 @@
 }
 
 .card:hover {
-  border: 1px solid red;
+  box-shadow: 1px 1px 1px red;
   background-color: #D3D3D3;
-
 }
