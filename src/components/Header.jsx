@@ -1,13 +1,14 @@
+import { LOGO_CDN_URL } from "../utils/constant";
+
 const Title = () => (
     <a href="/">
       <img
         className="logo"
         alt="Food-Villa Logo"
-        src="https://i.playboard.app/p/AAUvwnid3BDOuAtsI4uGV5D5H4LGGfPuPOQD-w88CHLP/default.jpg"
+        src= {LOGO_CDN_URL}
       />
     </a>
   );
-
 
 const Header = () => {
     return (

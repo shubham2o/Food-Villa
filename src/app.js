@@ -2,14 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-
-const Footer = () => {
-  return (
-    <div className="footer">
-      <h4>This is Footer.</h4>
-    </div>
-  );
-};
+import Footer from "./components/Footer";
 
 const AppLayout = () => {
   return (
