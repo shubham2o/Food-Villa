@@ -1,6 +1,5 @@
 import RestaurantCard from "./RestaurantCard";
-import { restaurantsList } from "../utils/constant";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function filterData(searchText, listOfRestaurants) {
   return listOfRestaurants.filter((res) => 
@@ -10,13 +9,26 @@ function filterData(searchText, listOfRestaurants) {
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [searchClicked, setSearchClicked] = useState("False");
-  const [listOfRestaurants, setListOfRestaurants] = useState(restaurantsList);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+
+  useEffect(() => {getRestaurants();}, []);
+
+  async function getRestaurants() {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6406443&lng=77.2746373&page_type=DESKTOP_WEB_LISTING"
+      );
+
+    const json = await data.json();
+
+    setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards)
+  }
 
   return (
   <>
     <div className="search-container">
       <input type="text" className="search-input" placeholder="Search" value={searchText}
         onChange = {(e) => {setSearchText(e.target.value)}}/>
+
       <button className="search-btn"
         onClick = {() => {
           /* if (searchClicked === "False") {
@@ -30,8 +42,10 @@ const Body = () => {
         }}
       > Search 
       </button>
+
       <h1>{searchClicked}</h1>
     </div>
+
     <div className="restaurant-list">
       {/* <RestaurantCard {...restaurantsList[0].data} />
       <RestaurantCard {...restaurantsList[1].data} /> */}
