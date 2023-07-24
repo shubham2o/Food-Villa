@@ -1,15 +1,14 @@
 import { LOGO_CDN_URL } from "../utils/constant";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const Title = () => (
-  <a href="/">
-    <img
-      className="logo"
-      alt="Food-Villa Logo"
-      src={LOGO_CDN_URL}
-    />
-  </a>
-);
+const Title = () => {
+  return (
+    <a href="/">
+      <img className="logo" alt="Food-Villa Logo" src={LOGO_CDN_URL} />
+    </a>
+  );
+}
 
 const Header = () => {
   const [btnName, setBtnName] = useState("true");
@@ -20,10 +19,10 @@ const Header = () => {
 
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Cart</li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+          <li><Link to="/cart">Cart</Link></li>
           {
             btnName
               ?
