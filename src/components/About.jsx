@@ -1,8 +1,8 @@
 const About = () => {
     return (
         <div>
-            <h1>About us page</h1>
-            <p>This is Namaste-React about page.</p>
+            <h1>About</h1>
+            <h3>This is Namaste-React Web Series🙏🏽</h3>
         </div>
     )
 };
